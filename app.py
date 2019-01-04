@@ -1,4 +1,4 @@
-import sys
+import sys, re
 from PyQt5 import QtWidgets, QtCore
 from classes import *
 
@@ -10,21 +10,31 @@ class Window(QtWidgets.QMainWindow):
 		self.setWindowTitle("Git Memo")
 		self.setGeometry(500, 50, 400, 500)
 
-		"""
-		# test: adding a page to the main window
-		self.page1 = CommandPage("init")
-		self.setCentralWidget(self.page1)
-		# test: adding a section to the page
-		self.sec1 = CommandSection("- Initializing a local git repository in the current directory", "git init")
-		self.page1.layout.addWidget(self.sec1, 0, QtCore.Qt.AlignCenter)
+		# generate UI pages from text file attached
+		self.generator()
 
-		self.sec2 = CommandSection("- Add changes in the current working directory to the staging area before committing any changes.", "git add .")
-		self.page1.layout.addWidget(self.sec2, 0, QtCore.Qt.AlignCenter)
-		"""
+	#_________________________________GENERATING VIEWS_______________________________________
 
+	def generator(self):
+		with open("notes.txt", "r") as file:
+			for line in file:
+				# check if line contains a heading / what / how using regex
+				heading = re.search(r'{(.*?)}:', line)
+				what = re.search(r'- (.*?):', line)
+				how = re.search(r'  \((.*?)\)', line)
+				if heading:
+					#print(heading.group(1))
+					self.page = CommandPage(heading.group(1))
+				elif what:
+					hold_what = what
+				elif how:
+					#print(hold_what.group(1), how.group(1))
+					self.section = CommandSection(hold_what.group(1), how.group(1))
+					self.page.layout.addWidget(self.section, 0, QtCore.Qt.AlignCenter)
 
+		self.setCentralWidget(self.page)
 
-
+		
 
 def main():
 	app = QtWidgets.QApplication(sys.argv)
