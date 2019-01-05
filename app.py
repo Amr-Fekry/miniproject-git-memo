@@ -9,13 +9,17 @@ class Window(QtWidgets.QMainWindow):
 		super(Window, self).__init__()
 		# modify Window
 		self.setWindowTitle("Git Memo")
-		self.setGeometry(500, 50, 400, 500)
+		self.setGeometry(500, 50, 600, 500)
 		# add a menu bar
 		self.main_menu = self.menuBar()
 		# add a stacked widget for multiple pages
 		self.pages = QtWidgets.QStackedWidget()
-		# show stacked widget
-		self.setCentralWidget(self.pages)
+		# add a scroll area
+		self.scroll = QtWidgets.QScrollArea()
+		self.scroll.setWidget(self.pages)
+		self.scroll.setWidgetResizable(True)
+		# show scroll area with stacked widget
+		self.setCentralWidget(self.scroll)
 		# generate UI pages from text file attached
 		self.generator()
 
