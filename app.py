@@ -9,12 +9,14 @@ class Window(QtWidgets.QMainWindow):
 		# modify Window
 		self.setWindowTitle("Git Memo")
 		self.setGeometry(500, 50, 400, 500)
-
+		# add a menu bar
+		self.main_menu = self.menuBar()
+		# add a sub menu for commands
+		self.commands_menu = self.main_menu.addMenu("&Commands Menu")
 		# add a stacked widget for multiple pages
 		self.pages = QtWidgets.QStackedWidget()
 		# show stacked widget
 		self.setCentralWidget(self.pages)
-
 		# generate UI pages from text file attached
 		self.generator()
 
@@ -49,9 +51,9 @@ class Window(QtWidgets.QMainWindow):
 					self.page.layout.addWidget(self.section, 0, QtCore.Qt.AlignCenter)
 
 		# access page by command "name"
-		self.pages.setCurrentIndex(page_dict["log"])
+		self.pages.setCurrentIndex(page_dict["init"])
 
-		
+
 
 def main():
 	app = QtWidgets.QApplication(sys.argv)
