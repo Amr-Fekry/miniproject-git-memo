@@ -1,6 +1,7 @@
 import sys, re
 from PyQt5 import QtWidgets, QtCore
 from classes import *
+from functools import partial
 
 class Window(QtWidgets.QMainWindow):
 	def __init__(self):
@@ -11,8 +12,6 @@ class Window(QtWidgets.QMainWindow):
 		self.setGeometry(500, 50, 400, 500)
 		# add a menu bar
 		self.main_menu = self.menuBar()
-		# add a sub menu for commands
-		self.commands_menu = self.main_menu.addMenu("&Commands list")
 		# add a stacked widget for multiple pages
 		self.pages = QtWidgets.QStackedWidget()
 		# show stacked widget
@@ -46,8 +45,7 @@ class Window(QtWidgets.QMainWindow):
 					self.section = CommandSection(hold_what.group(1), how.group(1))
 					self.page.layout.addWidget(self.section, 0, QtCore.Qt.AlignCenter)
 
-		# access page by command "name"
-		self.pages.setCurrentIndex(self.page_dict["log"])
+		self.generate_commands_menu()
 
 	def generate_page(self, name):
 		# create a page for the command
@@ -58,6 +56,19 @@ class Window(QtWidgets.QMainWindow):
 		self.page_dict[name] = self.index
 		self.index += 1
 
+	def generate_commands_menu(self):
+		# add a sub menu for commands
+		commands_menu = self.main_menu.addMenu("&Commands list")
+		# generate commands
+		for command, page_index in self.page_dict.items():
+			action = QtWidgets.QAction("&"+command, self)
+			action.triggered.connect(partial(self.switch_page, page_index))
+			commands_menu.addAction(action)
+
+	def switch_page(self, page_index):
+		# access page by page_index
+		self.pages.setCurrentIndex(page_index)
+		#self.pages.setCurrentIndex(self.page_dict[command_name]) # by command_name
 
 def main():
 	app = QtWidgets.QApplication(sys.argv)
