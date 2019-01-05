@@ -12,7 +12,7 @@ class Window(QtWidgets.QMainWindow):
 		# add a menu bar
 		self.main_menu = self.menuBar()
 		# add a sub menu for commands
-		self.commands_menu = self.main_menu.addMenu("&Commands Menu")
+		self.commands_menu = self.main_menu.addMenu("&Commands list")
 		# add a stacked widget for multiple pages
 		self.pages = QtWidgets.QStackedWidget()
 		# show stacked widget
@@ -23,10 +23,11 @@ class Window(QtWidgets.QMainWindow):
 	#_________________________________GENERATING VIEWS_______________________________________
 
 	def generator(self):
-		# a dictionary to store pages with indeces
-		page_dict = {}
+		# initialize a dictionary to store pages names and indeces
+		self.page_dict = {}
 		# index counter
-		index = 0
+		self.index = 0
+
 		# open text file and read line by line
 		with open("notes.txt", "r") as file:
 			for line in file:
@@ -37,22 +38,25 @@ class Window(QtWidgets.QMainWindow):
 				if heading:
 					# store the heading (command name)
 					name = heading.group(1)
-					# create a page for the command
-					self.page = CommandPage(name)
-					# add the page to the staked widgeet "pages"
-					self.pages.addWidget(self.page)
-					# add (name: index to) the dictionary
-					page_dict[name] = index
-					index += 1
+					self.generate_page(name)
 				elif what:
+					# store for the next round
 					hold_what = what
 				elif how:
 					self.section = CommandSection(hold_what.group(1), how.group(1))
 					self.page.layout.addWidget(self.section, 0, QtCore.Qt.AlignCenter)
 
 		# access page by command "name"
-		self.pages.setCurrentIndex(page_dict["init"])
+		self.pages.setCurrentIndex(self.page_dict["log"])
 
+	def generate_page(self, name):
+		# create a page for the command
+		self.page = CommandPage(name)
+		# add the page to the stacked widgeet "pages"
+		self.pages.addWidget(self.page)
+		# add (name: index to) the dictionary
+		self.page_dict[name] = self.index
+		self.index += 1
 
 
 def main():
