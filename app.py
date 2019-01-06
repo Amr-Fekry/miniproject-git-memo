@@ -12,6 +12,8 @@ class Window(QtWidgets.QMainWindow):
 		self.setGeometry(500, 50, 600, 500)
 		# add a menu bar
 		self.main_menu = self.menuBar()
+		# add a status bar
+		self.status = self.statusBar()
 		# add a stacked widget for multiple pages
 		self.pages = QtWidgets.QStackedWidget()
 		# add a scroll area

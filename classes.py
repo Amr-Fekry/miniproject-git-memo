@@ -60,5 +60,10 @@ class CommandSection(QtWidgets.QFrame):
 		self.layout.addWidget(self.how, 0, QtCore.Qt.AlignCenter)
 
 	def copy_text(self):
+		# get text on btton
 		text = self.how.text()
+		# copy to clip board
 		pyperclip.copy(text)
+		# display massege on status bar of oldest parent window()
+		self.window().status.showMessage("Copied ( " + text + " )")
+		
