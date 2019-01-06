@@ -1,0 +1,71 @@
+{init}:
+
+- Initializing a local git repository in the current directory: 
+  (git init)
+
+- Add changes in the current working directory to the staging area before committing any changes:
+  (git add .)
+
+
+{commit}:
+
+- Commit changes in the staging area (pops up text editor to write commit message):
+  (git commit)
+
+- Modify last commit:
+  (git commit --amend)
+
+
+
+{log}:
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git log)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git log)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git log)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git log)
+
+
+{status}:
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
+
+- hdjfkghkjdhgkjdfhgjhsdfj:
+  (git status)
