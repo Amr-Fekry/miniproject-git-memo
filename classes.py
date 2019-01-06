@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
+import pyperclip
 
 class CommandPage(QtWidgets.QWidget):
 	def __init__(self, label_parameter):
@@ -43,15 +44,21 @@ class CommandSection(QtWidgets.QFrame):
 		self.what.setObjectName("what")
 		self.what.setStyleSheet("#what {font-size: 14px}")
 		# add the how parameter to the section as a text area
-		self.how = QtWidgets.QLineEdit(how_parameter)
-		self.how.setReadOnly(True)
+		self.how = QtWidgets.QPushButton(how_parameter)
+		self.how.setToolTip("Click to copy")
+		self.how.clicked.connect(self.copy_text)
 		self.how.setFixedSize(500, 30)
 		self.how.setObjectName("how")
 		self.how.setStyleSheet("""
 			#how {font-size: 14px; 
-			      background-color: #5b7bad; 
+			      background-color: #303c51; 
 			      color: white; 
-			      padding-left: 5px}""")
+			      padding-left: 5px;
+			      text-align: left}""")
 		# add what and how to layout
 		self.layout.addWidget(self.what, 0, QtCore.Qt.AlignCenter)
 		self.layout.addWidget(self.how, 0, QtCore.Qt.AlignCenter)
+
+	def copy_text(self):
+		text = self.how.text()
+		pyperclip.copy(text)
