@@ -1,71 +1,126 @@
 {init}:
 
-- Initializing a local git repository in the current directory: 
+- initialize a local git repo in the current working directory: 
   (git init)
 
-- Add changes in the current working directory to the staging area before committing any changes:
-  (git add .)
 
+{clone}:
 
-{commit}:
+- copy a local/remote repo to a local directory (adds a new directory): 
+  (git clone <path/URL>)
 
-- Commit changes in the staging area (pops up text editor to write commit message):
-  (git commit)
-
-- Modify last commit:
-  (git commit --amend)
-
-
-
-{log}:
-
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git log)
-
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git log)
-
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git log)
-
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git log)
+- copy a local/remote repo and rename it in one step: 
+  (git clone <path/URL> <directory-name>)
 
 
 {status}:
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
+- Check the status of a repo:
   (git status)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+{log}:
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display basic info (SHA, author, date, message) about all existing commits:
+  (git log)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display basic info plus statistics (files changed, no.of lines changed):
+  (git log --stat)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display basic info plus actual patches made (files changed, where are the changes, what are the changes):
+  (git log -p)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display basic info plus patch info with whitespace changes ignored:
+  (git log -p -w)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display basic info plus both statistics and patch info:
+  (git log -p --stat)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- only display short SHA and commit message for each commit:
+  (git log --oneline)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+- display log with <flags> starting from a specific SHA:
+  (git log <flags> SHA)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
 
-- hdjfkghkjdhgkjdfhgjhsdfj:
-  (git status)
+{show}:
+
+- display basic info plus patch info (by default) for last commit only:
+  (git show)
+
+- display basic info plus patch info (by default) for a specific SHA only:
+  (git show SHA)
+
+- display basic info plus patch info (by default) with whitespace changes ignored:
+  (git show -w SHA)
+
+- display basic info plus statistics info for a specific SHA only (default -p will be disabled):
+  (git show --stat SHA)
+
+- display basic info plus both statistics and patch info for a specific SHA only:
+  (git show --stat -p SHA)
+
+
+{add}:
+
+- add specific file(s) in working directory to the staging area for tracking:
+  (git add <file1-name> <file2-name> … <fileN-name>)
+
+- add all files in working directory (including nested files and directories if any) to the staging area for tracking:
+  (git add .)
+
+- remove/unstage a file(s) from staging area if was accidentally added:
+  (git rm --cached <file1-name> <file2-name> … <fileN-name>)
+
+
+{commit}:
+
+- save files in the staging area as a commit (opens text editor to provide a commit message):
+  (git commit)
+
+- save files in the staging area and provide a commit message in one step:
+  (git commit -m <"message">)
+
+- add files to the staging area, save them as a commit, and provide a commit message in one step:
+  (git commit -am <"message">)
+
+- Modify last commit message:
+  (git commit --amend)
+
+- Modify last commit body (add to staging area then..):
+  (git commit --amend)
+
+{diff}:
+
+- display uncommited changes:
+  (git diff)
+
+- display uncommited changes with whitespace changes ignored:
+  (git diff -w)
+
+- discard uncommited changes and restore <file-name> to last commit state:
+  (git checkout -- <file-name>)
+
+{tag}:
+
+- display all tags in a repo:
+  (git tag)
+
+- add a tag to the last commit:
+  (git tag <tag>)
+
+- add an annotated tag to the last commit (opens text editor to provide a tag message):
+  (git tag -a <tag>)
+
+- add a tag to a specific SHA:
+  (git tag <tag> SHA)
+
+- add an annotated tag to a specific SHA (opens text editor to provide a tag message):
+  (git tag -a <tag> SHA)
+
+- delete a tag:
+  (git tag -d <tag>)
+
+
+
+ 
