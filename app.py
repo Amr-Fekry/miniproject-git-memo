@@ -66,7 +66,7 @@ class Window(QtWidgets.QMainWindow):
 		# add a sub menu for commands
 		commands_menu = self.main_menu.addMenu("&Commands list")
 		# generate commands
-		for command, page_index in self.page_dict.items():
+		for command, page_index in sorted(self.page_dict.items()):
 			action = QtWidgets.QAction("&"+command, self)
 			action.triggered.connect(partial(self.switch_page, page_index))
 			commands_menu.addAction(action)
