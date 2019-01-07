@@ -31,7 +31,9 @@ class CommandSection(QtWidgets.QFrame):
 		self.setObjectName("CommandSection")
 		self.setStyleSheet("""
 			#CommandSection {border: 1px solid lightgray;
-			                 border-radius: 5px}""")
+			                 border-radius: 5px;
+			                 background-color: #b3c0d6;
+			                 margin: 0 0 10 0}""")
 		# add a vertical layout
 		self.layout = QtWidgets.QVBoxLayout()
 		self.layout.setAlignment(QtCore.Qt.AlignTop)
@@ -51,10 +53,11 @@ class CommandSection(QtWidgets.QFrame):
 		self.how.setObjectName("how")
 		self.how.setStyleSheet("""
 			#how {font-size: 14px; 
-			      background-color: #303c51; 
+			      background-color: #1b2535; 
 			      color: white; 
 			      padding-left: 5px;
-			      text-align: left}""")
+			      text-align: left;
+			      margin-top: 5px}""")
 		# add what and how to layout
 		self.layout.addWidget(self.what, 0, QtCore.Qt.AlignCenter)
 		self.layout.addWidget(self.how, 0, QtCore.Qt.AlignCenter)
