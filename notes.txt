@@ -36,11 +36,11 @@
 - display basic info plus both statistics and patch info:
   (git log -p --stat)
 
-- only display short SHA and commit message for each commit:
+- only display short commit SHA and commit message for each commit:
   (git log --oneline)
 
-- display log with <flags> starting from a specific SHA:
-  (git log <flags> SHA)
+- display log with <flags> starting from a specific commit:
+  (git log <flags> <commit-SHA>)
 
 
 {show}:
@@ -48,17 +48,17 @@
 - display basic info plus patch info (by default) for last commit only:
   (git show)
 
-- display basic info plus patch info (by default) for a specific SHA only:
-  (git show SHA)
+- display basic info plus patch info (by default) for a specific commit only:
+  (git show <commit-SHA>)
 
-- display basic info plus patch info (by default) with whitespace changes ignored:
-  (git show -w SHA)
+- display basic info plus patch info (by default) for a specific commit only with whitespace changes ignored:
+  (git show -w <commit-SHA>)
 
-- display basic info plus statistics info for a specific SHA only (default -p will be disabled):
-  (git show --stat SHA)
+- display basic info plus statistics info for a specific commit only (default -p will be disabled):
+  (git show --stat <commit-SHA>)
 
-- display basic info plus both statistics and patch info for a specific SHA only:
-  (git show --stat -p SHA)
+- display basic info plus both statistics and patch info for a specific commit only:
+  (git show --stat -p <commit-SHA>)
 
 
 {add}:
@@ -69,7 +69,7 @@
 - add all files in working directory (including nested files and directories if any) to the staging area for tracking:
   (git add .)
 
-- remove/unstage a file(s) from staging area if was accidentally added:
+- remove/unstage file(s) from staging area:
   (git rm --cached <file1-name> <file2-name> … <fileN-name>)
 
 
@@ -79,16 +79,17 @@
   (git commit)
 
 - save files in the staging area and provide a commit message in one step:
-  (git commit -m <"message">)
+  (git commit -m "<message>")
 
 - add files to the staging area, save them as a commit, and provide a commit message in one step:
-  (git commit -am <"message">)
+  (git commit -am "<message>")
 
 - Modify last commit message:
   (git commit --amend)
 
 - Modify last commit body (add to staging area then..):
   (git commit --amend)
+
 
 {diff}:
 
@@ -101,9 +102,10 @@
 - discard uncommited changes and restore <file-name> to last commit state:
   (git checkout -- <file-name>)
 
+
 {tag}:
 
-- display all tags in a repo:
+- list all tags in a repo:
   (git tag)
 
 - add a tag to the last commit:
@@ -112,15 +114,82 @@
 - add an annotated tag to the last commit (opens text editor to provide a tag message):
   (git tag -a <tag>)
 
-- add a tag to a specific SHA:
-  (git tag <tag> SHA)
+- add a tag to a specific commit:
+  (git tag <tag> <commit-SHA>)
 
-- add an annotated tag to a specific SHA (opens text editor to provide a tag message):
-  (git tag -a <tag> SHA)
+- add an annotated tag to a specific commit (opens text editor to provide a tag message):
+  (git tag -a <tag> <commit-SHA>)
 
 - delete a tag:
   (git tag -d <tag>)
 
 
+{branch}:
 
- 
+- list all branches in a repo and highlight active one (with an asterisk):
+  (git branch)
+
+- add a branch starting from last commit in the active branch:
+  (git branch <branch-name>)
+
+- add a branch starting from a specific commit in the active branch:
+  (git branch <branch-name> <commit-SHA>)
+
+- switch to a branch:
+  (git checkout <branch-name>)
+
+- add a branch and switch to it in one step:
+  (git checkout -b <branch-name>)
+
+- add a branch to an existing branch while being on a third branch and switch to it:
+  (git checkout -b <new-branch-name> <existing_branch_name>)
+
+- graph all existing commits through lines that indicate each branch:
+  (git log --oneline --graph --all)
+
+- delete a branch
+  (git branch -d <branch-name>)
+
+- force deletion of a branch with unique commits:
+  (git branch -D <branch-name>)
+
+
+{merge}:
+
+- merge a branch into the current active branch (produces a new commit):
+  (git merge <branch-name>)
+
+- undo a merge if made on the wrong branch:
+  (git reset --hard HEAD^)
+
+- cancel a merge in case of a conflict:
+  (git merge --abort)
+
+
+{revert}:
+
+- undo changes made in a specific commit from last commit (produces a new commit):
+  (git revert <commit-SHA>)
+
+
+{reset}:
+
+- remove last (no. of carets) commit(s) from active branch and send its changes to the working directory:
+  (git reset HEAD^)
+
+- OR.. remove last (no. next to telda) commit(s) from active branch and send its changes to the working:
+  (git reset HEAD~1)
+
+- remove last commit from active branch and send its changes to the staging area (relative referencing above applies):
+  (git reset --soft HEAD^)
+
+- remove last commit from active branch (relative referencing above applies):
+  (git reset --hard HEAD^)
+
+- access removed commits:
+  (git reflog .. research it)
+
+
+
+
+
