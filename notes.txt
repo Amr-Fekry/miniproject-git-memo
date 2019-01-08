@@ -190,6 +190,76 @@
   (git reflog .. research it)
 
 
+{remote}:
+
+- list names of all remotes connected to a repo:
+  (git remote)
+
+- list names of all remotes and URL of each:
+  (git remote -v)
+
+- connect a local repo to a remote:
+  (git remote add <remote-name> <remote-URL>)
+
+- rename a remote:
+  (git remote rename <old-name> <new-name>)
 
 
+{push}:
 
+- copy commits of a local branch to a remote branch (local tracking branch will be created):
+  (git push <remote-name> <branch-name>)
+
+
+{pull}:
+
+- copy commits of a remote branch to local branch:
+  (git pull <remote-name> <branch-name>)
+
+
+{fetch}:
+
+- copy commits of a remote branch to local "tracking" branch:
+  (git fetch <remote-name> <branch-name>)
+
+
+{shortlog}:
+
+- group commits by author, sorted alphabetically by author name (commits messages are displayed):
+  (git shortlog)
+
+- group commits by author, sorted numerically by no. of commits (commits messages are displayed):
+  (git shortlog -n)
+
+- group commits by author, sorted alphabetically by author name (shorter with no commits messages):
+  (git shortlog -s)
+
+- group commits by author, sorted numerically by no. of commits (shorter with no commits messages):
+  (git shortlog -s -n)
+
+- filter commits by a specific author, display (all basic info):
+  (git log --author=<author-name>)
+
+- filter commits by a specific author, display (no. of commits, commits messages):
+  (git shortlog --author=<author-name>)
+
+- filter commits by a specific author, display (no. of commits):
+  (git shortlog -s --author=<author-name>)
+
+- filter commits by a specific author, display and sort by (no. of commits) if more than one author yielded:
+  (git shortlog -s -n --author=<author-name>)
+
+- filter commits by exactly one author, display (all basic info):
+  (git log --author="<author-full-name>")
+
+- filter commits containing a word in commit message or description area, display (all basic info):
+  (git log --grep=<word>)
+
+- filter commits containing a sentence in commit message or description area, display (all basic info):
+  (git log --grep="<sentence>")
+
+
+{rebase}:
+
+- modify a past n commit(s) (opens text editor to provide modifying command(s)):
+  (git rebase -i HEAD~n)
