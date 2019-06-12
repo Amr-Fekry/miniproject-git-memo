@@ -1,6 +1,6 @@
 {init}:
 
-- initialize a local git repo in the current working directory: 
+- initialize a local git repo using the current working directory: 
   (git init)
 
 
@@ -63,14 +63,14 @@
 
 {add}:
 
-- add specific file(s) in working directory to the staging area for tracking:
+- add specific file(s) in working directory to the staging area for tracking (separate names by spaces):
   (git add <file1-name> <file2-name> … <fileN-name>)
 
-- add all files in working directory (including nested files and directories if any) to the staging area for tracking:
+- add all files in working directory to the staging area for tracking:
   (git add .)
 
-- remove/unstage file(s) from staging area:
-  (git rm --cached <file1-name> <file2-name> … <fileN-name>)
+- remove/unstage file(s) from staging area (separate names by spaces):
+  (git rm --cached <file1-name> <file2-name> …<fileN-name>)
 
 
 {commit}:
@@ -81,13 +81,13 @@
 - save files in the staging area and provide a commit message in one step:
   (git commit -m "<message>")
 
-- add files to the staging area, save them as a commit, and provide a commit message in one step:
+- add changes in tracked files to the staging area, save them as a commit, and provide a commit message in one step (new untracked files will not be included):
   (git commit -am "<message>")
 
-- Modify last commit message:
+- Modify last commit message (changes commit SHA):
   (git commit --amend)
 
-- Modify last commit body (add to staging area then..):
+- Modify last commit body (add changes to staging area then..):
   (git commit --amend)
 
 
@@ -101,6 +101,9 @@
 
 - discard uncommited changes and restore <file-name> to last commit state:
   (git checkout -- <file-name>)
+
+- display difference between any two commits (changes made to transform commit1 to commit2):
+  (git diff <commit1-reference> <commit2-reference>)
 
 
 {tag}:
@@ -156,7 +159,7 @@
 
 {merge}:
 
-- merge a branch into the current active branch (produces a new commit):
+- merge a branch into the current active branch (produces a new commit if a divergent merge):
   (git merge <branch-name>)
 
 - undo a merge if made on the wrong branch:
@@ -207,7 +210,7 @@
 
 {push}:
 
-- copy commits of a local branch to a remote branch (local tracking branch will be created):
+- copy commits of a local branch to a remote branch (a local tracking branch will be created):
   (git push <remote-name> <branch-name>)
 
 
